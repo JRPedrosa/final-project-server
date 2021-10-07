@@ -9,7 +9,7 @@ const Arpeggio = require("../models/Arpeggio.model")
 router.post("/interval", async (req, res) => {
     const { name, possibleIntervals, user, direction } = req.body;
 
-    if (!name || !possibleIntervals) {
+    if (!name || possibleIntervals.length === 0) {
         res.status(400).json({ message: "missing fields"});
         return;
     }
@@ -59,7 +59,7 @@ router.get("/arpeggios", async (req, res) => {
 router.post("/create-scales", async (req, res) => {
     const { name, possibleScales, user } = req.body;
 
-    if (!name || !possibleScales) {
+    if (!name || possibleScales.length === 0) {
         res.status(400).json({ message: "missing fields"});
         return;
     }
@@ -76,7 +76,7 @@ router.post("/create-scales", async (req, res) => {
 router.post("/create-arpeggio", async (req, res) => {
     const { name, possibleScales, user } = req.body;
 
-    if (!name || !possibleScales) {
+    if (!name || possibleScales.length === 0) {
         res.status(400).json({ message: "missing fields"});
         return;
     }
